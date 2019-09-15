@@ -20,7 +20,10 @@ El esquema original toma una imagen que consiste en dos mitades juntas: la prime
 El esquema que se ha empleado es idéntico. En este caso la primera mitad corresponde a la imagen original de una cara y la segunda a la misma imagen donde se han eliminado aleatoriamente algunas regiones. Más adelante se explica cómo se lleva a cabo esta eliminación aleatoria. A continuación se muestra un ejemplo:
                                                 IMAGEN EJEMPLO DE DATOS DE ENTRADA!!
                                                 
-Los datos se han tomado de https://www.kaggle.com/dataturks/face-detection-in-images. En el repositorio se encuentra el archivo face_detection.json que contiene toda la información necesaria. También los scripts necesarios para crear el dataset.
+Los datos se han tomado de https://www.kaggle.com/dataturks/face-detection-in-images. En el repositorio se encuentra el archivo face_detection.json que contiene toda la información necesaria. También los scripts necesarios para crear el dataset. El proceso es tan simple como descargar todas las imágenes que aparecen en el JSON y guardar cada "annotation" de cada cara como una imagen independiente.
+
+## Nota sobre la calidad de las imágenes
+El modelo del paper trabaja con imágenes de 256x256 píxeles. Algunos de los recortes de las caras son bastante más pequeños que ese tamaño y por tanto han sido aumentados. Las imágenes que resultan evidentemente tienen una calidad muy pobre. Otros datasets de caras incluyen mucha imagen alrededor de la cara. Esto es un problema ya que al aplicar la máscara se borrarán cosas que no necesariamente interesa enseñar el modelo a reconstruir para este proyecto.
 
 ## ¿Cómo crear las eliminaciones aleatorias en las imágenes?
 A continuación se detallan los pasos seguidos:
@@ -29,6 +32,8 @@ A continuación se detallan los pasos seguidos:
 2. Para cada imagen original se escogen aleatoriamente entre 1 y el máximo de máscaras que se quiera. En nuestro caso 2, ya que 3 era demasiado borrar. Para cada máscara se escoge un escalado aleatorio entre 1 y 5 veces, y una posición aleatoria con la única condición de que quede dentro de la imagen.
 3. Una vez escogidas la escala y posición aleatorias, se multiplica la imagen por las máscaras. Este proceso se repite varias veces (3 en nuestro caso, ya que 5 generaba demasiadas imágenes y había problemas varios).
 4. Se "pegan" juntas la imagen original y la imagen "enmascarada", ambas escaladas para medir 256x256 y así coincidir con las dimensiones establecidas en el paper.
+
+El conjunto de entrenamiento y validación ha sido generado simplemente cogiendo un puñado de imágenes y copiándolas en la carpeta destinada para test, y el resto en la carpeta train, tal y como están distribuidas las imágenes originales. IMPORTANTE: si se generan los conjuntos aleatoriamente, hay que tener en cuenta que hay tres copias de cada imagen con distintas máscaras de borrado aplicadas. No tendría mucho sentido que algunas de las copias estén en el entrenamiento y otras en la validación. Esto sería hacer trampas. Cuidado.
 
 ## Cómo configurar el entorno para entrenar el modelo
 
