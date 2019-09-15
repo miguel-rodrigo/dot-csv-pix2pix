@@ -7,4 +7,4 @@ El caso propuesto consiste en eliminar de manera automática imperfecciones faci
 surgido otros métodos que probablemente resuelvan este problema mejor (por ejemplo, https://arxiv.org/abs/1804.07723), pero ese no es el
 objetivo del proyecto.
 
-
+El proyecto se ha basado en el código del notebook de pix2pix disponible en la documentación de Tensorflow (https://www.tensorflow.org/beta/tutorials/generative/pix2pix)
