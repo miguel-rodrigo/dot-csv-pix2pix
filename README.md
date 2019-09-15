@@ -53,9 +53,9 @@ El conjunto de entrenamiento y validación ha sido generado simplemente cogiendo
 Los checkpoints y las imágenes de muestra se grabarán cada 10 epochs en google Drive también en la ruta especificada. Si no existe, se creará, por lo que no dará errores. Cada checkpoint ocupa unos 600Mb, por lo que se recomienda o bien irlos borrando a medida que se creen algunos nuevos, o asegurarse que caben todos (15 en total por defecto). En caso contrario se puede perder todo el trabajo, que supone unas 4-5h de entrenamiento en una VM con aceleración GPU.
 
 ## Resultados
-IMAGEN RESULTADOS DE TEST
-IMAGEN RESULTADOS CUSTOM
+![](./resultado_1.png)
+![](./resultado_2.png)
 
 ## Experimentos futuros
---> Utilizar (255, 0, 255) en lugar de negro (hay negro en muchas imágenes y el sistema se confunde)
---> Utilizar una función de error que dé más peso a los píxeles que se han borrado. En los primeros epochs el sistema aprende a copiar casi toda la imagen. A partir de ahí, el modelo mejora muy lentamente. Este sistema se ha creado para convertir imágenes completas en otra cosa...
+* Utilizar (255, 0, 255) en lugar de negro (hay negro en muchas imágenes y el sistema se confunde)
+* Utilizar una función de error que dé más peso a los píxeles que se han borrado. En los primeros epochs el sistema aprende a copiar casi toda la imagen. A partir de ahí, el modelo mejora muy lentamente. Este sistema se ha creado para convertir imágenes COMPLETAS en otra cosa...Esta, junto a mejorar los datos de entrada, sea probablemente la mayor fuente de mejorías del modelo.
