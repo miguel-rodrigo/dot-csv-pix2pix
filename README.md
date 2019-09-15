@@ -23,7 +23,7 @@ El esquema que se ha empleado es idéntico. En este caso la primera mitad corres
 Los datos se han tomado de https://www.kaggle.com/dataturks/face-detection-in-images. En el repositorio se encuentra el archivo face_detection.json que contiene toda la información necesaria. También los scripts necesarios para crear el dataset. El proceso es tan simple como descargar todas las imágenes que aparecen en el JSON y guardar cada "annotation" de cada cara como una imagen independiente.
 
 ## Nota sobre la calidad de las imágenes
-El modelo del paper trabaja con imágenes de 256x256 píxeles. Algunos de los recortes de las caras son bastante más pequeños que ese tamaño y por tanto han sido aumentados. Las imágenes que resultan evidentemente tienen una calidad muy pobre. Otros datasets de caras incluyen mucha imagen alrededor de la cara. Esto es un problema ya que al aplicar la máscara se borrarán cosas que no necesariamente interesa enseñar el modelo a reconstruir para este proyecto.
+El modelo del paper trabaja con imágenes de 256x256 píxeles. Algunos de los recortes de las caras son bastante más pequeños que ese tamaño y por tanto han sido aumentados. Las imágenes que resultan evidentemente tienen una calidad muy pobre. Otros datasets de caras incluyen mucha imagen alrededor de la cara. Esto es un problema ya que al aplicar la máscara se borrarán cosas que no necesariamente interesa enseñar el modelo a reconstruir para este proyecto. Sería interesante experimentar los resultados obtenidos eliminando las imágenes de menor calidad, ya que el paper muestra que con unas 400 imágenes puede ser suficiente.
 
 ## ¿Cómo crear las eliminaciones aleatorias en las imágenes?
 A continuación se detallan los pasos seguidos:
