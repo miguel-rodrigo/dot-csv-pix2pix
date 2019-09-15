@@ -38,6 +38,20 @@ A continuación se detallan los pasos seguidos:
 El conjunto de entrenamiento y validación ha sido generado simplemente cogiendo un puñado de imágenes y copiándolas en la carpeta destinada para test, y el resto en la carpeta train, tal y como están distribuidas las imágenes originales. IMPORTANTE: si se generan los conjuntos aleatoriamente, hay que tener en cuenta que hay tres copias de cada imagen con distintas máscaras de borrado aplicadas. No tendría mucho sentido que algunas de las copias estén en el entrenamiento y otras en la validación. Esto sería hacer trampas. Cuidado.
 
 ## Cómo configurar el entorno para entrenar el modelo
+1. Crear la estructura de carpetas tal y como está en el repositorio. Los archivos de imágenes son sólo una muestra ya que github no permite subirlos todos.
+2. Ejecutar el script download_face_images.py. Este script leerá todas las rutas del archivo JSON y descargará las imágenes en la carpeta raw_face_images
+3. Ejecutar el script extract_faces_from_raw_images.py. Este script leerá las anotaciones de caras de cada una de las imágenes y extraerá un recorte con las coordenadas especificadas. Las imágenes de caras recortadas se almacenarán en el directorio face_images
+4. Ejecutar el script create_masked_faces_data.py. Este script creará las imágenes enmascaradas junto con la imagen original en el formato listo para consumir por el notebook y las almacena en el directorio masked_faces.
+5. Crear conjuntos test y entrenamiento. Para ello, hay que tomar subsets del directorio anterior y colocarlos en las carpetas test y train dentro de la carpeta final_faces. Es importante que todas las copias de la misma imagen queden dentro del mismo subconjunto, y no mezclarlas. Yo simplemente he tomado un corte donde me ha parecido que más o menos fuera 80/20 a ojillo, pero como hay bastantes más que las que dice el paper que hacen falta (>400), da un poco igual el tamaño (siempre que sea algo con sentido).
+6. Comprimir la carpeta final_faces en un .7z llamado final_faces.7z. Esto lo he hecho porque al subir a google Drive, si son muchos pequeños archivos tarda como varios siglos por algún motivo.
+7. Subir a Drive el archivo. Yo lo he subido a "Mi Unidad/Colab Notebooks". Si se sube a otra ruta, hay que modificar el notebook.
+8. Ejecutar el notebook en Google Colab. Si se ha subido el .7z a otra ruta, cambiarla en el notebook.
+
+Los checkpoints y las imágenes de muestra se grabarán cada 10 epochs en google Drive también en la ruta especificada. Si no existe, se creará, por lo que no dará errores. Cada checkpoint ocupa unos 600Mb, por lo que se recomienda o bien irlos borrando a medida que se creen algunos nuevos, o asegurarse que caben todos (15 en total por defecto). En caso contrario se puede perder todo el trabajo, que supone unas 4-5h de entrenamiento en una VM con aceleración GPU.
+
+## Resultados
+IMAGEN RESULTADOS DE TEST
+IMAGEN RESULTADOS CUSTOM
 
 ## Experimentos futuros
 --> Utilizar (255, 0, 255) en lugar de negro (hay negro en muchas imágenes y el sistema se confunde)
