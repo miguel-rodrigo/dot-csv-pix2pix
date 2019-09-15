@@ -1,7 +1,7 @@
 # DotCSV-pix2pix-demo
 ¿Hay algo de tu cara que no te gusta? ¿Tienes problemas de acné o de mmm...calvicie? Ahórrate millones en tratamientos. Con este proyecto podrás arreglar tus problemas en tus imágenes. ¿A quién le importa la realidad? Lo importante en la vida es que salgas bien y feliz en Instagram!
 
-(./descarga.png)
+!(./descarga.png)
 
 ## Introducción
 Este proyecto tiene por objetivo demostrar una aplicación de utilidad de la arquitectura Pix2pix (https://arxiv.org/abs/1611.07004). Este
