@@ -21,8 +21,7 @@ La justificación de este tipo de discriminador, según los autores, reside en l
 ## Datos de entrenamiento
 El esquema original toma una imagen que consiste en dos mitades juntas: la primera mitad corresponde a la imagen real de una fachada que se quiere generar y la segunda del dibujo que se emplea como input.
 
-El esquema que se ha empleado es idéntico. En este caso la primera mitad corresponde a la imagen original de una cara y la segunda a la misma imagen donde se han eliminado aleatoriamente algunas regiones. Más adelante se explica cómo se lleva a cabo esta eliminación aleatoria. A continuación se muestra un ejemplo:
-                                                IMAGEN EJEMPLO DE DATOS DE ENTRADA!!
+El esquema que se ha empleado es idéntico. En este caso la primera mitad corresponde a la imagen original de una cara y la segunda a la misma imagen donde se han eliminado aleatoriamente algunas regiones. Más adelante se explica cómo se lleva a cabo esta eliminación aleatoria.
                                                 
 Los datos se han tomado de https://www.kaggle.com/dataturks/face-detection-in-images. En el repositorio se encuentra el archivo face_detection.json que contiene toda la información necesaria. También los scripts necesarios para crear el dataset. El proceso es tan simple como descargar todas las imágenes que aparecen en el JSON y guardar cada "annotation" de cada cara como una imagen independiente.
 
