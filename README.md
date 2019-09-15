@@ -25,6 +25,8 @@ Los datos se han tomado de https://www.kaggle.com/dataturks/face-detection-in-im
 ## Nota sobre la calidad de las imágenes
 El modelo del paper trabaja con imágenes de 256x256 píxeles. Algunos de los recortes de las caras son bastante más pequeños que ese tamaño y por tanto han sido aumentados. Las imágenes que resultan evidentemente tienen una calidad muy pobre. Otros datasets de caras incluyen mucha imagen alrededor de la cara. Esto es un problema ya que al aplicar la máscara se borrarán cosas que no necesariamente interesa enseñar el modelo a reconstruir para este proyecto. Sería interesante experimentar los resultados obtenidos eliminando las imágenes de menor calidad, ya que el paper muestra que con unas 400 imágenes puede ser suficiente.
 
+En general, el dataset es muy heterogéneo en cuanto a la calidad y tamaño de las imágenes, además de la posición e iluminación de las caras. Probablemente este sea el mayor punto de debilidad del modelo desarrollado.
+
 ## ¿Cómo crear las eliminaciones aleatorias en las imágenes?
 A continuación se detallan los pasos seguidos:
 1. Crear máscaras en paint. Se crean las formas que se van a borrar en las imágenes. Son imágenes de 50x50. Algunos ejemplos a continuación.
