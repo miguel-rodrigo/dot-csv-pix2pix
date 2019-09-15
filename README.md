@@ -24,6 +24,11 @@ Los datos se han tomado de https://www.kaggle.com/dataturks/face-detection-in-im
 
 ## ¿Cómo crear las eliminaciones aleatorias en las imágenes?
 A continuación se detallan los pasos seguidos:
+1. Crear máscaras en paint. Se crean las formas que se van a borrar en las imágenes. Son imágenes de 50x50. Algunos ejemplos a continuación.
+                                                IMAGEN EJEMPLO DE DATOS DE MÁSCARAS!!
+2. Para cada imagen original se escogen aleatoriamente entre 1 y el máximo de máscaras que se quiera. En nuestro caso 2, ya que 3 era demasiado borrar. Para cada máscara se escoge un escalado aleatorio entre 1 y 5 veces, y una posición aleatoria con la única condición de que quede dentro de la imagen.
+3. Una vez escogidas la escala y posición aleatorias, se multiplica la imagen por las máscaras. Este proceso se repite varias veces (3 en nuestro caso, ya que 5 generaba demasiadas imágenes y había problemas varios).
+4. Se "pegan" juntas la imagen original y la imagen "enmascarada", ambas escaladas para medir 256x256 y así coincidir con las dimensiones establecidas en el paper.
 
 ## Cómo configurar el entorno para entrenar el modelo
 
